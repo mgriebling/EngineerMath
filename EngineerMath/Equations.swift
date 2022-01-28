@@ -13,7 +13,7 @@ class Equations {
 	static func solveUsingCramersRule (_ a: Matrix, y: Vector) -> Vector? {
 		let n = y.count
 		let det = a.determinant()
-		var coef = Vector(size:n)
+        let coef = Vector(size:n)
 		
 		func computeCramerForColumn (_ col: Int) -> Double {
 			if let b = a.replaceColumn(col, withVector: y) {

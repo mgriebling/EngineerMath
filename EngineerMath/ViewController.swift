@@ -43,8 +43,8 @@ class ViewController: NSViewController {
 //		else if x < y { println("\(x) < \(y)") }
 //		else { println("\(x) = \(y)") }
         
-        var xa = [1,2,3,4]
-        let a = xa[safe: 6]
+        let xa = [1,2,3,4]
+        let a = xa[safe: 6]!
         print(a, xa)
         
         typealias V = Measurement<Unit>.Voltage
