@@ -30,75 +30,75 @@ public extension String {
 	
 	// Extensions to make it easier to work with C-style strings
 	
-    subscript (n: Int) -> Character {
-        get {
-            let s = self.index(self.startIndex, offsetBy: n)
-            if s < self.endIndex {
-                return self[s]
-            }
-            return "\0"
-        }
-        set {
-            let s = self.index(self.startIndex, offsetBy: n)
-            if s < self.endIndex {
-                let str = self[index(after: s)...]
-                self = self[...s] + "\(newValue)" + str
-            }
-        }
-	}
-	
-    func count() -> Int { return self.count }
-	
-    func stringByTrimmingTrailingCharactersInSet (_ characterSet: CharacterSet) -> String {
-		if let rangeOfLastWantedCharacter = self.rangeOfCharacter(from: characterSet.inverted, options:.backwards) {
-			return String(self[...rangeOfLastWantedCharacter.upperBound])
-		}
-		return ""
-	}
-    
-    func substring (_ from: Int, _ length: Int) -> String {
-        let str = self as NSString
-        return str.substring(with: NSMakeRange(from, length))
-    }
-    
-    func contains (_ s: String) -> Bool {
-        let str = self as NSString
-        return str.contains(s)
-    }
-    
-    func trim() -> String {
-        return self.trimmingCharacters(in: CharacterSet.whitespaces)
-    }
+//    subscript (n: Int) -> Character {
+//        get {
+//            let s = self.index(self.startIndex, offsetBy: n)
+//            if s < self.endIndex {
+//                return self[s]
+//            }
+//            return "\0"
+//        }
+//        set {
+//            let s = self.index(self.startIndex, offsetBy: n)
+//            if s < self.endIndex {
+//                let str = self[index(after: s)...]
+//                self = self[...s] + "\(newValue)" + str
+//            }
+//        }
+//	}
+//	
+//    func count() -> Int { return self.count }
+//	
+//    func stringByTrimmingTrailingCharactersInSet (_ characterSet: CharacterSet) -> String {
+//		if let rangeOfLastWantedCharacter = self.rangeOfCharacter(from: characterSet.inverted, options:.backwards) {
+//			return String(self[...rangeOfLastWantedCharacter.upperBound])
+//		}
+//		return ""
+//	}
+//    
+//    func substring (_ from: Int, _ length: Int) -> String {
+//        let str = self as NSString
+//        return str.substring(with: NSMakeRange(from, length))
+//    }
+//    
+//    func contains (_ s: String) -> Bool {
+//        let str = self as NSString
+//        return str.contains(s)
+//    }
+//    
+//    func trim() -> String {
+//        return self.trimmingCharacters(in: CharacterSet.whitespaces)
+//    }
 	
 }
 
 public extension Character {
 
-    var unicodeValue : Int { return Int(unicodeScalar.value) }
-    var unicodeScalar : UnicodeScalar { return String(self).unicodeScalars.first ?? "\0" }
-    
-    func isLetter() -> Bool { return CharacterSet.letters.contains(unicodeScalar) }
-    func isAscii() -> Bool { return unicodeScalar.isASCII }
-    
-    func isAlphanumeric() -> Bool { return CharacterSet.alphanumerics.contains(unicodeScalar) }
-    
-    var lowercase : Character {
-        let s = String(self).lowercased(with: Locale.current)
-        return s.first ?? self
-    }
-	
-	init(_ int: Int) { self = Character(UnicodeScalar(int)!) }
-	
-    func add (_ n: Int) -> Character { return Character(self.unicodeValue + n) }
-
-    static func == (l: Int, r: Character) -> Bool { return l == r.unicodeValue }
-    static func == (l: Character, r: Int) -> Bool { return r == l }
-    static func != (l: Int, r: Character) -> Bool { return l != r.unicodeValue }
-    static func != (l: Character, r: Int) -> Bool { return r != l }
-    static func + (c: Character, inc: Int) -> Character { return c.add(inc) }
-    static func - (c: Character, inc: Int) -> Character { return c.add(-inc) }
-    static func - (c: Character, inc: Character) -> Int { return c.add(-inc.unicodeValue).unicodeValue }
-    static func += (c: inout Character, inc: Int) { c = c + inc }
-    static func -= (c: inout Character, inc: Int) { c = c - inc }
+//    var unicodeValue : Int { return Int(unicodeScalar.value) }
+//    var unicodeScalar : UnicodeScalar { return String(self).unicodeScalars.first ?? "\0" }
+//    
+//    func isLetter() -> Bool { return CharacterSet.letters.contains(unicodeScalar) }
+//    func isAscii() -> Bool { return unicodeScalar.isASCII }
+//    
+//    func isAlphanumeric() -> Bool { return CharacterSet.alphanumerics.contains(unicodeScalar) }
+//    
+//    var lowercase : Character {
+//        let s = String(self).lowercased(with: Locale.current)
+//        return s.first ?? self
+//    }
+//	
+//	init(_ int: Int) { self = Character(UnicodeScalar(int)!) }
+//	
+//    func add (_ n: Int) -> Character { return Character(self.unicodeValue + n) }
+//
+//    static func == (l: Int, r: Character) -> Bool { return l == r.unicodeValue }
+//    static func == (l: Character, r: Int) -> Bool { return r == l }
+//    static func != (l: Int, r: Character) -> Bool { return l != r.unicodeValue }
+//    static func != (l: Character, r: Int) -> Bool { return r != l }
+//    static func + (c: Character, inc: Int) -> Character { return c.add(inc) }
+//    static func - (c: Character, inc: Int) -> Character { return c.add(-inc) }
+//    static func - (c: Character, inc: Character) -> Int { return c.add(-inc.unicodeValue).unicodeValue }
+//    static func += (c: inout Character, inc: Int) { c = c + inc }
+//    static func -= (c: inout Character, inc: Int) { c = c - inc }
     
 }

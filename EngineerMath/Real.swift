@@ -595,7 +595,7 @@ public struct Real : CustomStringConvertible, BasicOperationType {
 		
         func getCharFromString(_ string: inout String) -> Character {
 			if !string.isEmpty {
-                let ch = string.remove(at: string.startIndex)
+                let ch = string.removeFirst()
 				return ch
 			}
 			return "\0"
@@ -604,8 +604,8 @@ public struct Real : CustomStringConvertible, BasicOperationType {
 		let separators = newRadix == 10 ? "eE" : "pP"
         let index = Real.ValidDigits.index(Real.ValidDigits.startIndex, offsetBy: newRadix)
         let digits = String(Real.ValidDigits[...index])
-		let validDigits = NSCharacterSet(charactersIn: digits)
-		let signChars = NSCharacterSet(charactersIn:"+-")
+		let validDigits = Array(digits)
+		let signChars = Array("+-")
 		var userPoint = 0
 		
         self.init(0, radix: newRadix)
@@ -614,10 +614,10 @@ public struct Real : CustomStringConvertible, BasicOperationType {
 		var ch = getCharFromString(&mantissa)
 		
 		// extract the sign
-		if signChars.characterIsMember(unichar(ch.unicodeValue)) { _ = appendDigit(ch, useComplement:0); ch = getCharFromString(&mantissa) }
+		if signChars.contains(ch) { _ = appendDigit(ch, useComplement:0); ch = getCharFromString(&mantissa) }
 		
 		// extract the mantissa
-        while validDigits.characterIsMember(unichar(ch.unicodeValue)) {
+        while validDigits.contains(ch) { //validDigits.characterIsMember(unichar(ch.unicodeValue)) {
 			_ = appendDigit(ch, useComplement:0)
 			ch = getCharFromString(&mantissa)
 		}
@@ -625,7 +625,7 @@ public struct Real : CustomStringConvertible, BasicOperationType {
 		// extract the fraction
 		if ch == "." {
 			ch = getCharFromString(&mantissa)
-			while validDigits.characterIsMember(unichar(ch.unicodeValue)) {
+            while validDigits.contains(ch) { //validDigits.characterIsMember(unichar(ch.unicodeValue)) {
 				_ = appendDigit(ch, useComplement:0)
 				ch = getCharFromString(&mantissa)
 				userPoint += 1
@@ -640,11 +640,11 @@ public struct Real : CustomStringConvertible, BasicOperationType {
 			var expNegative = false
 			if !expString.isEmpty {
 				ch = getCharFromString(&expString)
-				if signChars.characterIsMember(unichar(ch.unicodeValue)) {
+                if signChars.contains(ch) { //signChars.characterIsMember(unichar(ch.unicodeValue)) {
 					expNegative = ch == "-"
 					ch = getCharFromString(&expString)
 				}
-				while validDigits.characterIsMember(unichar(ch.unicodeValue)) {
+                while validDigits.contains(ch) { // validDigits.characterIsMember(unichar(ch.unicodeValue)) {
 					appendExpDigit(ch)
 					ch = getCharFromString(&expString)
 				}
@@ -826,9 +826,9 @@ public struct Real : CustomStringConvertible, BasicOperationType {
 			
 			// Multiply through by the radix and add the digit
 			let idigit: Digit
-			let aChar : Character = "A"
+			let aChar = Character("A")
 			if digit <= "9" { idigit = Digit(String(digit))! }
-            else { idigit = Digit(digit.unicodeValue - aChar.unicodeValue + 10) }
+            else { idigit = Digit(digit.asciiValue! - aChar.asciiValue! + 10) }
 			Real.AppendDigitToMantissa(&values, digit: idigit, radix: radix, limit: valueLimit)
 			
 			if complement != 0 {
@@ -2537,7 +2537,7 @@ public struct Real : CustomStringConvertible, BasicOperationType {
 	// Interprets the given int as an exponent and formats it as a string. Why did I do this?
 	//
 	private func exponentStringFromInt(_ exp: Int) -> String {
-        var workingExponent = exp;
+        var workingExponent = exp
         var exponentIsNegative = false
         var digits = [Character](repeating: "0", count: Real.MaxExponentLength)
         var currentPosition = Real.MaxExponentLength - 1  // index of the end of the string
@@ -2553,7 +2553,7 @@ public struct Real : CustomStringConvertible, BasicOperationType {
         
         // Work right to left and fill in the digits
         while currentPosition > Real.MaxExponentLength - Int(valuePrecision) - 2 {
-            digits[currentPosition] = Real.ValidDigits[workingExponent % radix]
+            digits[currentPosition] = Array(Real.ValidDigits)[workingExponent % radix]
             
             // Keep checking for the leftmost non-zero digit
             if digits[currentPosition] != "0" {
@@ -2631,7 +2631,7 @@ public struct Real : CustomStringConvertible, BasicOperationType {
         limitedString(4, fixedPlaces:0, fillLimit:false, complement:0, mantissa:&string, exponent:&exponent)
         
         // Append the exponent string
-        if exponent.count() != 0 {
+        if exponent.count != 0 {
             string += "e" + exponent
         }
         
@@ -2648,7 +2648,7 @@ public struct Real : CustomStringConvertible, BasicOperationType {
         var digitStr = [Character](repeating: "0", count: Real.MaxMantissaLength)
         var values = [Digit](repeating: 0, count: Real.NumDigits)
         var zeros = 0
-        let point = NSLocale.current.decimalSeparator!
+        let point = Character(NSLocale.current.decimalSeparator!)
         
         // Handle the "not-a-number" case
         if !isValid {
@@ -2705,10 +2705,8 @@ public struct Real : CustomStringConvertible, BasicOperationType {
                 var d = 0
                 
                 digitStr[0] = "0"
-                while d < point.count() {
-                    digitStr[1 + d] = point[d]
-                    d += 1
-                }
+                digitStr[1 + d] = point
+                d += 1
                 for i in 1+d..<places+2 {
                     digitStr[i] = "0"
                 }
@@ -2873,12 +2871,7 @@ public struct Real : CustomStringConvertible, BasicOperationType {
             currentChar += 1
             
             if (userPointCopy - digitsInNumber > 0) {
-                var d = 0
-                
-                while d < point.count() {
-                    digitStr[currentChar] = point[d]; currentChar += 1
-                    d += 1
-                }
+                digitStr[currentChar] = point; currentChar += 1
             }
             
             for _ in 0..<userPointCopy - digitsInNumber {
@@ -2891,15 +2884,11 @@ public struct Real : CustomStringConvertible, BasicOperationType {
         digitsInNumber -= 1
         while digitsInNumber >= 0 {
             let power: Double = Real.pow(radix, digitsInNumber % Int(valuePrecision))
-            let nextDigit = Real.ValidDigits[(Int(Double(values[digitsInNumber / Int(valuePrecision)]) / power) % radix)]
+            let nextDigit = Array(Real.ValidDigits)[(Int(Double(values[digitsInNumber / Int(valuePrecision)]) / power) % radix)]
             
             if userPointCopy <= digitsInNumber {
                 if userPointCopy != 0 && userPointCopy == (digitsInNumber + 1) {
-                    var d = 0
-                    while d < point.count() {
-                        digitStr[currentChar] = point[d]; currentChar += 1
-                        d += 1
-                    }
+                    digitStr[currentChar] = point; currentChar += 1
                 }
                 
                 digitStr[currentChar] = nextDigit
@@ -2908,11 +2897,7 @@ public struct Real : CustomStringConvertible, BasicOperationType {
                 zeros += 1
             } else {
                 if (userPointCopy != 0 && userPointCopy == (digitsInNumber + 1 + zeros)) {
-                    var d = 0
-					while d < point.count() {
-						digitStr[currentChar] = point[d]; currentChar += 1
-						d += 1
-					}
+                    digitStr[currentChar] = point; currentChar += 1
                 }
 				
                 for _ in 0..<zeros {
