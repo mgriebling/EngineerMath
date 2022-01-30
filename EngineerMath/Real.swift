@@ -133,12 +133,6 @@ struct Real : Equatable, Hashable, CustomStringConvertible {
 	private struct FixedLReal {
 		var real = RealArray(repeating: 0, count:maxMant+8)
 	}
-	private struct FixedReal {
-		var real = [Float](repeating: 0, count:maxMant+8)
-	}
-	private struct Real8 {
-        var real = [Float](repeating: 0, count:8)
-	}
 
 	static var err : Int = 0
 	static var debug : Int = 0
@@ -2508,6 +2502,8 @@ struct Real : Equatable, Hashable, CustomStringConvertible {
 		print("Entier(3.6)=\(m.Entier())")
 		m = Real(-3.6)
 		print("Entier(-3.6)=\(m.Entier())")
+        m = Real(69)
+        print("69!=\(m.Factorial())")
         print("Test Complete!")
 	} //Test;
 
