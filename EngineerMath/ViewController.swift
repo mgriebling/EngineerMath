@@ -43,35 +43,43 @@ class ViewController: NSViewController {
 //		else if x < y { println("\(x) < \(y)") }
 //		else { println("\(x) = \(y)") }
         
-        let xa = [1,2,3,4]
-        let a = xa[safe: 6]!
-        print(a, xa)
+        // Assignment compatibility test
+//        let x = UInt8(6)
+//        let y = UInt8(20)
+//        let z = 1000 + UInt16(x)
+//        let a = x + 24 + z + 35.6
+//        print(a, y, z)
+        Real.Test()
         
-        typealias V = Measurement<Unit>.Voltage
-        typealias R = Measurement<Unit>.Resistance
-        typealias I = Measurement<Unit>.Current
-        typealias T = Measurement<Unit>.Duration
-		
-        let v = V(10, .volts)
-        let r = R(20, .ohms)
-        let f = 0.10000000000000003
-        let x = v / r   // result unit is amperes
-        let y = v * x   // result unit is watts
-        let i = I(6, .microamperes)
-        let t = T(52*10, .weeks)  // 10 years
-        let e = i * t   // result unit is amp-hours
-        let ly = Measurement(1, UnitLength.lightyears)
-        let t1 = Measurement(value:25, unit: UnitTemperature.celsius)
-        let t2 = Measurement(value:10, unit: UnitTemperature.fahrenheit)
-        let t3 = t1 + t2
-        let t1k = t1.converted(to: .kelvin)
-        let t2k = t2.converted(to: .kelvin)
-        print(t1, " or ", t1k, " + ", t2, " or ", t2k, " = ", t3, " or ", t3.converted(to: .celsius))
+//        let xa = [1,2,3,4]
+//        let a = xa[safe: 6]!
+//        print(a, xa)
+//
+//        typealias V = Measurement<Unit>.Voltage
+//        typealias R = Measurement<Unit>.Resistance
+//        typealias I = Measurement<Unit>.Current
+//        typealias T = Measurement<Unit>.Duration
+//
+//        let v = V(10, .volts)
+//        let r = R(20, .ohms)
+//        let f = 0.10000000000000003
+//        let x = v / r   // result unit is amperes
+//        let y = v * x   // result unit is watts
+//        let i = I(6, .microamperes)
+//        let t = T(52*10, .weeks)  // 10 years
+//        let e = i * t   // result unit is amp-hours
+//        let ly = Measurement(1, UnitLength.lightyears)
+//        let t1 = Measurement(value:25, unit: UnitTemperature.celsius)
+//        let t2 = Measurement(value:10, unit: UnitTemperature.fahrenheit)
+//        let t3 = t1 + t2
+//        let t1k = t1.converted(to: .kelvin)
+//        let t2k = t2.converted(to: .kelvin)
+//        print(t1, " or ", t1k, " + ", t2, " or ", t2k, " = ", t3, " or ", t3.converted(to: .celsius))
 //        let i = UnitSpeed.kilometersPerHour.symbol
 //        let myOhm = UnitElectricResistance.ohms
 //        let x = t == s
-        print(f, v, " / ", r, " = ", x, ", ", v, " * ", x, " = ", y, ", ", i, " for ", t, " = ", e)
-        print(ly, " = ", ly.converted(to: .kilometers))
+//        print(f, v, " / ", r, " = ", x, ", ", v, " * ", x, " = ", y, ", ", i, " for ", t, " = ", e)
+//        print(ly, " = ", ly.converted(to: .kilometers))
         
 //        t.add("m"); t.add("m")
 //        t.add("ft")

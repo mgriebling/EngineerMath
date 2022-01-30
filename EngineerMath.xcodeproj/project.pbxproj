@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 46;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -15,10 +15,13 @@
 		2FD25D2D1B1F3EEA0043E9A1 /* Bag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FD25D2C1B1F3EEA0043E9A1 /* Bag.swift */; };
 		2FDCAF5A1B8202F10000DA5F /* complex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FDCAF591B8202F10000DA5F /* complex.swift */; };
 		4718005620BEAC0300E4E166 /* Array-Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4718005520BEAC0300E4E166 /* Array-Extension.swift */; };
-		47357B5A1B7205930044B498 /* Real.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47357B591B7205930044B498 /* Real.swift */; };
 		478D21981B83412000CE325B /* RComplex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 478D21971B83412000CE325B /* RComplex.swift */; };
 		47AB880320821E47005CFEC2 /* String+Char.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F5A55FB1B724FCD001CB3C6 /* String+Char.swift */; };
 		47AB88052082270E005CFEC2 /* Measurements.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47AB88042082270E005CFEC2 /* Measurements.swift */; };
+		47B4E93B27A49A2700B92223 /* ComplexModule in Frameworks */ = {isa = PBXBuildFile; productRef = 47B4E93A27A49A2700B92223 /* ComplexModule */; };
+		47B4E93D27A49A2700B92223 /* Numerics in Frameworks */ = {isa = PBXBuildFile; productRef = 47B4E93C27A49A2700B92223 /* Numerics */; };
+		47B4E93F27A49A2700B92223 /* RealModule in Frameworks */ = {isa = PBXBuildFile; productRef = 47B4E93E27A49A2700B92223 /* RealModule */; };
+		47B4E94127A5F25A00B92223 /* Real.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47B4E94027A5F25A00B92223 /* Real.swift */; };
 		47D0F3231B205435002C1213 /* MyUnits.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47D0F3221B205435002C1213 /* MyUnits.swift */; };
 		47D2E01420C0081E00FDD3C9 /* SimpleAssignments.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47D2E01320C0081E00FDD3C9 /* SimpleAssignments.swift */; };
 		47F601561B7CA7A400C67789 /* Equations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F53A75B1B0FA385007C273A /* Equations.swift */; };
@@ -52,9 +55,10 @@
 		2FD25D2C1B1F3EEA0043E9A1 /* Bag.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Bag.swift; sourceTree = "<group>"; };
 		2FDCAF591B8202F10000DA5F /* complex.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = complex.swift; sourceTree = "<group>"; };
 		4718005520BEAC0300E4E166 /* Array-Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array-Extension.swift"; sourceTree = "<group>"; };
-		47357B591B7205930044B498 /* Real.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Real.swift; sourceTree = "<group>"; };
+		47357B591B7205930044B498 /* Real-old.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Real-old.swift"; sourceTree = "<group>"; };
 		478D21971B83412000CE325B /* RComplex.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RComplex.swift; sourceTree = "<group>"; };
 		47AB88042082270E005CFEC2 /* Measurements.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Measurements.swift; sourceTree = "<group>"; };
+		47B4E94027A5F25A00B92223 /* Real.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Real.swift; sourceTree = "<group>"; };
 		47D0F3221B205435002C1213 /* MyUnits.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyUnits.swift; sourceTree = "<group>"; };
 		47D2E01320C0081E00FDD3C9 /* SimpleAssignments.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SimpleAssignments.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -64,6 +68,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				47B4E93D27A49A2700B92223 /* Numerics in Frameworks */,
+				47B4E93B27A49A2700B92223 /* ComplexModule in Frameworks */,
+				47B4E93F27A49A2700B92223 /* RealModule in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -105,7 +112,8 @@
 				2F53A72F1B0F79B4007C273A /* Supporting Files */,
 				2F53A7571B0FA221007C273A /* MatrixVector.swift */,
 				47D2E01320C0081E00FDD3C9 /* SimpleAssignments.swift */,
-				47357B591B7205930044B498 /* Real.swift */,
+				47357B591B7205930044B498 /* Real-old.swift */,
+				47B4E94027A5F25A00B92223 /* Real.swift */,
 				478D21971B83412000CE325B /* RComplex.swift */,
 				2F53A75B1B0FA385007C273A /* Equations.swift */,
 				47D0F3221B205435002C1213 /* MyUnits.swift */,
@@ -160,6 +168,11 @@
 			dependencies = (
 			);
 			name = EngineerMath;
+			packageProductDependencies = (
+				47B4E93A27A49A2700B92223 /* ComplexModule */,
+				47B4E93C27A49A2700B92223 /* Numerics */,
+				47B4E93E27A49A2700B92223 /* RealModule */,
+			);
 			productName = EngineerMath;
 			productReference = 2F53A72C1B0F79B4007C273A /* EngineerMath.app */;
 			productType = "com.apple.product-type.application";
@@ -213,6 +226,9 @@
 				Base,
 			);
 			mainGroup = 2F53A7231B0F79B4007C273A;
+			packageReferences = (
+				47B4E93927A49A2700B92223 /* XCRemoteSwiftPackageReference "swift-numerics" */,
+			);
 			productRefGroup = 2F53A72D1B0F79B4007C273A /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -250,7 +266,7 @@
 				47AB88052082270E005CFEC2 /* Measurements.swift in Sources */,
 				2F53A7341B0F79B4007C273A /* ViewController.swift in Sources */,
 				478D21981B83412000CE325B /* RComplex.swift in Sources */,
-				47357B5A1B7205930044B498 /* Real.swift in Sources */,
+				47B4E94127A5F25A00B92223 /* Real.swift in Sources */,
 				2FD25D2D1B1F3EEA0043E9A1 /* Bag.swift in Sources */,
 				4718005620BEAC0300E4E166 /* Array-Extension.swift in Sources */,
 				47AB880320821E47005CFEC2 /* String+Char.swift in Sources */,
@@ -396,7 +412,8 @@
 				MACOSX_DEPLOYMENT_TARGET = 10.12;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = macosx;
-				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				SWIFT_VERSION = 4.0;
 			};
 			name = Release;
@@ -410,7 +427,10 @@
 				CODE_SIGN_IDENTITY = "-";
 				COMBINE_HIDPI_IMAGES = YES;
 				INFOPLIST_FILE = EngineerMath/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
 				LIBRARY_SEARCH_PATHS = /usr/local/lib;
 				LINK_WITH_STANDARD_LIBRARIES = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.solinst.$(PRODUCT_NAME:rfc1034identifier)";
@@ -430,7 +450,10 @@
 				CODE_SIGN_IDENTITY = "-";
 				COMBINE_HIDPI_IMAGES = YES;
 				INFOPLIST_FILE = EngineerMath/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
 				LIBRARY_SEARCH_PATHS = /usr/local/lib;
 				LINK_WITH_STANDARD_LIBRARIES = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.solinst.$(PRODUCT_NAME:rfc1034identifier)";
@@ -454,7 +477,11 @@
 					"$(inherited)",
 				);
 				INFOPLIST_FILE = EngineerMathTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.solinst.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -472,7 +499,11 @@
 					"$(inherited)",
 				);
 				INFOPLIST_FILE = EngineerMathTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.solinst.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -511,6 +542,35 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		47B4E93927A49A2700B92223 /* XCRemoteSwiftPackageReference "swift-numerics" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/apple/swift-numerics.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		47B4E93A27A49A2700B92223 /* ComplexModule */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 47B4E93927A49A2700B92223 /* XCRemoteSwiftPackageReference "swift-numerics" */;
+			productName = ComplexModule;
+		};
+		47B4E93C27A49A2700B92223 /* Numerics */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 47B4E93927A49A2700B92223 /* XCRemoteSwiftPackageReference "swift-numerics" */;
+			productName = Numerics;
+		};
+		47B4E93E27A49A2700B92223 /* RealModule */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 47B4E93927A49A2700B92223 /* XCRemoteSwiftPackageReference "swift-numerics" */;
+			productName = RealModule;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 2F53A7241B0F79B4007C273A /* Project object */;
 }

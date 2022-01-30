@@ -17,18 +17,17 @@ extension UInt8 : IntCompatible {}
 extension UInt16 : IntCompatible {}
 extension UInt32 : IntCompatible {}
 
-public func + <T:IntCompatible, S:BinaryInteger>(l: S, r: T) -> S { return l + S(r) }
-public func + <T:IntCompatible>(l: T, r: Int) -> Int { return Int(l) + r }
-public func - <T:IntCompatible>(l: Int, r: T) -> Int { return l - Int(r) }
-public func - <T:IntCompatible>(l: T, r: Int) -> Int { return Int(l) - r }
-public func * <T:IntCompatible>(l: Int, r: T) -> Int { return l * Int(r) }
-public func * <T:IntCompatible>(l: T, r: Int) -> Int { return Int(l) * r }
-public func / <T:IntCompatible>(l: Int, r: T) -> Int { return l / Int(r) }
-public func / <T:IntCompatible>(l: T, r: Int) -> Int { return Int(l) / r }
+public func + <T:IntCompatible>(l: Int, r: T) -> Int { l + Int(r) }
+public func + <T:IntCompatible>(l: T, r: Int) -> Int { Int(l) + r }
+public func - <T:IntCompatible>(l: Int, r: T) -> Int { l - Int(r) }
+public func - <T:IntCompatible>(l: T, r: Int) -> Int { Int(l) - r }
+public func * <T:IntCompatible>(l: Int, r: T) -> Int { l * Int(r) }
+public func * <T:IntCompatible>(l: T, r: Int) -> Int { Int(l) * r }
+public func / <T:IntCompatible>(l: Int, r: T) -> Int { l / Int(r) }
+public func / <T:IntCompatible>(l: T, r: Int) -> Int { Int(l) / r }
 
 extension Double {
-    static func + <T:IntCompatible>(l: Double, r: T) -> Double { return l + Double(Int(r)) }
-    static func + <T:IntCompatible>(l: T, r: Double) -> Double { return Double(Int(l)) + r }
-    
+    static func + <T:IntCompatible>(l: Double, r: T) -> Double { l + Double(Int(r)) }
+    static func + <T:IntCompatible>(l: T, r: Double) -> Double { Double(Int(l)) + r }
 }
 
